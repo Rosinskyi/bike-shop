@@ -1,0 +1,20 @@
+<div class="user">
+  <p>{{ user.email }}</p>
+  <select
+    name="role"
+    id="role"
+    #selectedRole
+    (change)="onChangeRole(selectedRole.value)"
+  >
+    <option
+      *ngFor="let role of roles"
+      [value]="role"
+      [selected]="role === user.role"
+    >
+      {{ role }}
+    </option>
+  </select>
+  <button *ngIf="newRole != '' && newRole !== user.role" (click)="updateRole()">
+    save
+  </button>
+</div>

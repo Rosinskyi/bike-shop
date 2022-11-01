@@ -1,0 +1,17 @@
+<div class="title">Home / Contacts</div>
+<div class="content">
+  <div class="info">
+    <p>
+      <span>Address: </span>Gulmohar, S-1, Ground Floor, Maharan CHS, Cross Rd
+      Number 12, JVPD Scheme, Vile Parle West, Mumbai, Maharashtra 400049, India
+      Areas served: Pune and nearby areas
+    </p>
+    <div class="phone">
+      <span>Phone: </span><a href="tel:+99-99-99-9999"> +99-99-99-9999</a>
+    </div>
+    <app-contact-form></app-contact-form>
+  </div>
+  <agm-map [latitude]="lat" [longitude]="long">
+    <agm-marker [latitude]="lat" [longitude]="long"> </agm-marker>
+  </agm-map>
+</div>

@@ -1,0 +1,274 @@
+<form [formGroup]="orderForm">
+  <div class="step" *ngIf="formStep === 'good'" formGroupName="goods">
+    <h2>Good:</h2>
+    <select
+      name="good"
+      id="good"
+      formControlName="good"
+      required
+      [ngStyle]="{
+        borderLeft:
+          good.invalid && good.dirty
+            ? '5px solid red'
+            : good.valid
+            ? '5px solid green'
+            : ''
+      }"
+    >
+      <option *ngFor="let item of products" [value]="item.name">
+        {{ item.name }}
+      </option>
+    </select>
+    <div *ngIf="good.invalid && good.dirty">
+      <div *ngIf="good.errors?.['required']">good is required.</div>
+    </div>
+    <textarea
+      name="description"
+      id="description"
+      rows="5"
+      cols="33"
+      formControlName="description"
+      [ngStyle]="{
+        borderLeft:
+          description.invalid && description.dirty
+            ? '5px solid red'
+            : description.valid
+            ? '5px solid green'
+            : ''
+      }"
+    ></textarea>
+    <div *ngIf="description.invalid && description.dirty">
+      <div *ngIf="description.errors?.['required']">
+        Description is required.
+      </div>
+      <div *ngIf="description.errors?.['minlength']">
+        Description must be at least 20 characters long.
+      </div>
+    </div>
+  </div>
+  <div class="step" *ngIf="formStep === 'delivery'" formGroupName="address">
+    <div>
+      <h2>Delivery Address:</h2>
+      <label for="country">Country: </label>
+      <input
+        id="country"
+        type="text"
+        formControlName="country"
+        [ngStyle]="{
+          borderLeft:
+            country.invalid && country.dirty
+              ? '5px solid red'
+              : country.valid
+              ? '5px solid green'
+              : ''
+        }"
+      />
+    </div>
+
+    <div *ngIf="country.invalid && country.dirty">
+      <div *ngIf="country.errors?.['required']">Country is required.</div>
+      <div *ngIf="country.errors?.['minlength']">
+        Country must be at least 4 characters long.
+      </div>
+    </div>
+    <div>
+      <label for="city">City: </label>
+      <input
+        id="city"
+        type="text"
+        formControlName="city"
+        [ngStyle]="{
+          borderLeft:
+            city.invalid && city.dirty
+              ? '5px solid red'
+              : city.valid
+              ? '5px solid green'
+              : ''
+        }"
+      />
+    </div>
+    <div *ngIf="city.invalid && city.dirty">
+      <div *ngIf="city.errors?.['required']">City is required.</div>
+      <div *ngIf="city.errors?.['minlength']">
+        City must be at least 4 characters long.
+      </div>
+    </div>
+    <div>
+      <label for="address">Address: </label>
+      <input
+        id="address"
+        type="text"
+        formControlName="address"
+        [ngStyle]="{
+          borderLeft:
+            address.invalid && address.dirty
+              ? '5px solid red'
+              : address.valid
+              ? '5px solid green'
+              : ''
+        }"
+      />
+    </div>
+    <div *ngIf="address.invalid && address.dirty">
+      <div *ngIf="address.errors?.['required']">Address is required.</div>
+      <div *ngIf="address.errors?.['minlength']">
+        Address must be at least 4 characters long.
+      </div>
+    </div>
+  </div>
+  <div class="step" *ngIf="formStep === 'payment'">
+    <h2>Payment:</h2>
+    <div>
+      <label for="card">Card </label>
+      <input
+        id="card"
+        type="radio"
+        value="card"
+        formControlName="payment"
+        [ngStyle]="{
+          borderLeft:
+            payment.invalid && payment.dirty
+              ? '5px solid red'
+              : payment.valid
+              ? '5px solid green'
+              : ''
+        }"
+      />
+    </div>
+    <div>
+      <label for="paypal">Paypal </label>
+      <input
+        id="paypal"
+        type="radio"
+        value="paypal"
+        formControlName="payment"
+        [ngStyle]="{
+          borderLeft:
+            payment.invalid && payment.dirty
+              ? '5px solid red'
+              : payment.valid
+              ? '5px solid green'
+              : ''
+        }"
+      />
+    </div>
+    <div>
+      <label for="cash">Cash </label>
+      <input
+        id="cash"
+        type="radio"
+        value="cash"
+        formControlName="payment"
+        [ngStyle]="{
+          borderLeft:
+            payment.invalid && payment.dirty
+              ? '5px solid red'
+              : payment.valid
+              ? '5px solid green'
+              : ''
+        }"
+      />
+    </div>
+    <div *ngIf="payment.invalid && payment.dirty">
+      <div *ngIf="payment.errors?.['required']">Payment is required.</div>
+    </div>
+  </div>
+  <div class="step" *ngIf="formStep === 'date'">
+    <h2>Delivery date:</h2>
+    <div>
+      <label for="country">Today </label>
+      <input
+        type="radio"
+        id="today"
+        value="today"
+        formControlName="delivery"
+        [ngStyle]="{
+          borderLeft:
+            delivery.invalid && delivery.dirty
+              ? '5px solid red'
+              : delivery.valid
+              ? '5px solid green'
+              : ''
+        }"
+      />
+    </div>
+    <div>
+      <label for="country">Tomorrow </label>
+      <input
+        type="radio"
+        id="tomorrow"
+        value="tomorrow"
+        formControlName="delivery"
+        [ngStyle]="{
+          borderLeft:
+            delivery.invalid && delivery.dirty
+              ? '5px solid red'
+              : delivery.valid
+              ? '5px solid green'
+              : ''
+        }"
+      />
+    </div>
+    <div>
+      <label for="country">Choose Date: </label>
+      <input
+        id="date"
+        type="date"
+        value="date"
+        formControlName="delivery"
+        [ngStyle]="{
+          borderLeft:
+            delivery.invalid && delivery.dirty
+              ? '5px solid red'
+              : delivery.valid
+              ? '5px solid green'
+              : ''
+        }"
+      />
+    </div>
+    <div *ngIf="delivery.invalid && delivery.dirty">
+      <div *ngIf="delivery.errors?.['required']">Delivery is required.</div>
+    </div>
+  </div>
+  <div class="step" *ngIf="formStep === 'summary'">
+    <div class="summary">
+      <div class="summary__item">
+        <h3>Goods:</h3>
+        <p>{{ orderForm.value.goods.good }}</p>
+        <p>{{ orderForm.value.goods.description }}</p>
+      </div>
+      <div class="summary__item">
+        <h3>Address:</h3>
+        <p>{{ orderForm.value.address.country }}</p>
+        <p>{{ orderForm.value.address.city }}</p>
+        <p>{{ orderForm.value.address.address }}</p>
+      </div>
+      <div class="summary__item">
+        <h3>Payment:</h3>
+        <p>{{ orderForm.value.payment }}</p>
+      </div>
+      <div class="summary__item">
+        <h3>Delivery Date:</h3>
+        <p>{{ orderForm.value.delivery }}</p>
+      </div>
+    </div>
+  </div>
+  <div>
+    <button
+      (click)="prevStep()"
+      [ngStyle]="{ display: formStep === 'good' ? 'none' : '' }"
+    >
+      Prev
+    </button>
+    <button
+      (click)="nextStep()"
+      [ngStyle]="{ display: formStep === 'summary' ? 'none' : '' }"
+    >
+      Next
+    </button>
+
+    <a [routerLink]="['accepted']">
+      <button *ngIf="formStep === 'summary'">Submit</button>
+    </a>
+  </div>
+</form>

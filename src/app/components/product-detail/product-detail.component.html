@@ -1,0 +1,116 @@
+<div class="container">
+  <div class="details" *ngIf="product != undefined">
+    <div class="images">
+      <img
+        [src]="image === undefined ? product.imgUrl[0] : image"
+        alt=""
+        srcset=""
+      />
+
+      <div
+        class="images__list"
+        *ngFor="let link of product.imgUrl"
+        (click)="switchImage(link)"
+        [ngStyle]="{
+          border: link === image ? '1px solid black' : '1px solid grey'
+        }"
+      >
+        <img [src]="link" alt="" srcset="" />
+      </div>
+    </div>
+    <div class="content">
+      <h2 class="title">{{ product.name }}</h2>
+      <p class="description">
+        {{ product.description | truncate: length }}
+        <span
+          *ngIf="length < product.description.length"
+          (click)="length = product.description.length"
+          >(Read More)</span
+        >
+        <span *ngIf="length > 35" (click)="length = 35">(Hide)</span>
+      </p>
+      <p *ngIf="product?.discount === 0">
+        {{ product.price | currency: "EUR" }}
+      </p>
+      <div *ngIf="product.discount > 0">
+        <p [ngStyle]="{ 'text-decoration': 'line-through' }">
+          {{ product.price | currency: "EUR" }}
+        </p>
+        <p class="discount-price">
+          {{
+            product.price - (product.discount / 100) * product.price
+              | currency: "EUR"
+          }}
+        </p>
+      </div>
+      <div class="rating">
+        <mat-icon>star</mat-icon>
+        <mat-icon>star</mat-icon>
+        <mat-icon>star</mat-icon>
+        <mat-icon>star</mat-icon>
+        <mat-icon>star</mat-icon>
+        <span>({{ product.review.length }})</span>
+      </div>
+      <div class="review__links">
+        <a [routerLink]="product.review.length > 0 ? 'reviews' : null"
+          >Read {{ product.review.length }} reviews</a
+        >
+        <a routerLink="">Write a Review</a>
+      </div>
+      <div class="color__list">
+        <label for="color">Color</label>
+        <select name="color" id="color">
+          <option disabled selected>Select Color</option>
+          <option *ngFor="let color of product.color" value="color">
+            {{ color }}
+          </option>
+        </select>
+      </div>
+      <div class="size__list">
+        <label for="size">Size</label>
+        <select name="size" id="size">
+          <option disabled selected>Select Size</option>
+          <option *ngFor="let size of product?.size" value="size">
+            {{ size }}
+          </option>
+        </select>
+      </div>
+      <p class="available">
+        <span style="font-weight: bold">Availability: </span>Please select
+        options
+      </p>
+      <div class="quantity__item">
+        <label for="quantity">Quantity</label>
+        <input type="number" name="quantity" id="quantity" />
+      </div>
+
+      <button (click)="onClick()" class="add-cart">
+        <mat-icon>shopping_cart</mat-icon>Add to cart
+      </button>
+      <button (click)="onClick()" class="add-wish">
+        <mat-icon>auto_fix_normal</mat-icon>Add to Wish List
+      </button>
+    </div>
+  </div>
+  <div
+    class="modification"
+    *ngIf="user && (user.role === 'admin' || user.role === 'owner')"
+  >
+    <a routerLink="./edit"
+      ><button><mat-icon>edit</mat-icon>Edit</button></a
+    >
+    <button (click)="deleteItemFlag = true">
+      <mat-icon>delete</mat-icon>
+      Delete
+    </button>
+  </div>
+  <div class="confirmation" *ngIf="deleteItemFlag">
+    <div class="confirmation__content">
+      <p>Are you sure you want to delete?</p>
+      <div class="confirmation__controllers">
+        <button (click)="deleteProduct()">Yes</button>
+        <button (click)="deleteItemFlag = false">No</button>
+      </div>
+    </div>
+  </div>
+</div>

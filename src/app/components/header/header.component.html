@@ -1,0 +1,15 @@
+<header>
+  <app-navigation></app-navigation>
+  <div class="title">Dummy Shop</div>
+  <div class="auth">
+    <div *ngIf="user">
+      {{ user.email }}
+      <button routerLink="users">show users</button>
+      <button (click)="signOut()">Sign Out</button>
+    </div>
+    <div *ngIf="!user">
+      <button (click)="openWindow()">Sign In</button>
+    </div>
+  </div>
+</header>
+<app-auth-window (onClose)="openWindow()" *ngIf="isOpen"></app-auth-window>

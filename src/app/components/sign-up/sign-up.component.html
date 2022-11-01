@@ -1,0 +1,55 @@
+<mat-icon (click)="close()">close</mat-icon>
+<form
+  action=""
+  [formGroup]="registrationForm"
+  (ngSubmit)="registrationForm.valid ? signUp() : ''"
+  @openClose
+>
+  <div>
+    <label for="email">Email</label>
+    <input
+      type="email"
+      name="email"
+      id="email"
+      formControlName="email"
+      required
+      [ngStyle]="{
+        borderLeft:
+          email.invalid && (email.dirty || email.touched)
+            ? '5px solid red'
+            : email.valid
+            ? '5px solid green'
+            : ''
+      }"
+    />
+  </div>
+  <div *ngIf="email.invalid && (email.dirty || email.touched)">
+    <p *ngIf="email.errors?.['email']">email is required</p>
+    <p *ngIf="email.errors?.['required']">email is required</p>
+  </div>
+  <div>
+    <label for="password">Password</label>
+    <input
+      type="password"
+      name="password"
+      id="password"
+      formControlName="password"
+      required
+      [ngStyle]="{
+        borderLeft:
+          password.invalid && (password.dirty || password.touched)
+            ? '5px solid red'
+            : password.valid
+            ? '5px solid green'
+            : ''
+      }"
+    />
+  </div>
+  <div *ngIf="password.invalid && (password.dirty || password.touched)">
+    <p *ngIf="password.errors?.['required']">password is required</p>
+    <p *ngIf="password.errors?.['minLength']">must be minimum 6 symbols</p>
+  </div>
+  <div>{{ error }}</div>
+  <button type="submit">Submit</button>
+  <button (click)="switch()">Back</button>
+</form>

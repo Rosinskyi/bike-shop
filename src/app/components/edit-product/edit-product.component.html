@@ -1,0 +1,213 @@
+<div *ngIf="product != undefined">
+  <form
+    action=""
+    [formGroup]="productEditForm"
+    (ngSubmit)="productEditForm.valid ? updateProduct() : ''"
+  >
+    <div>
+      <input type="file" name="file" id="file" (change)="onUpload($event)" />
+    </div>
+    <div
+      [ngStyle]="{
+        display: 'flex',
+        flexFlow: 'row nowrap',
+        alignItems: 'center',
+        gap: '10px'
+      }"
+      *ngFor="let item of imgUrl.value"
+    >
+      <img [ngStyle]="{ width: '100px' }" [src]="item" alt="img" />
+      <div
+        [ngStyle]="{ width: '30px', cursor: 'pointer' }"
+        (click)="deleteImg(item)"
+      >
+        <mat-icon>delete</mat-icon>
+      </div>
+    </div>
+    <div>
+      <label for="price">Price</label>
+      <input
+        type="number"
+        name="price"
+        id="price"
+        formControlName="price"
+        [ngStyle]="{
+          borderLeft:
+            price.invalid && (price.dirty || price.touched)
+              ? '5px solid red'
+              : price.valid
+              ? '5px solid green'
+              : ''
+        }"
+      />
+      <div *ngIf="price.invalid && (price.dirty || price.touched)">
+        <p *ngIf="price.errors?.['required']">price is required</p>
+        <p *ngIf="price.errors?.['min']">must be greater than 0</p>
+      </div>
+    </div>
+    <div>
+      <label for="discount">Discount</label>
+      <input
+        type="number"
+        name="discount"
+        id="discount"
+        formControlName="discount"
+      />
+    </div>
+    <div *ngIf="discount.value > 0">
+      <label for="discountUntil">Discount Until</label>
+      <input
+        type="date"
+        name="discountUntil"
+        id="discountUntil"
+        formControlName="discountUntil"
+      />
+    </div>
+    <div>
+      <label for="shop">Shop</label>
+      <input
+        type="text"
+        name="shop"
+        id="shop"
+        formControlName="shop"
+        [ngStyle]="{
+          borderLeft:
+            shop.invalid && (shop.dirty || shop.touched)
+              ? '5px solid red'
+              : shop.valid
+              ? '5px solid green'
+              : ''
+        }"
+      />
+      <div *ngIf="shop.invalid && (shop.dirty || shop.touched)">
+        <p *ngIf="shop.errors?.['required']">shop is required</p>
+      </div>
+    </div>
+    <div>
+      <label for="name">Name</label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        formControlName="name"
+        [ngStyle]="{
+          borderLeft:
+            name.invalid && (name.dirty || name.touched)
+              ? '5px solid red'
+              : name.valid
+              ? '5px solid green'
+              : ''
+        }"
+      />
+      <div *ngIf="name.invalid && (name.dirty || name.touched)">
+        <p *ngIf="name.errors?.['required']">name is required</p>
+      </div>
+    </div>
+    <div>
+      <label for="description">Description</label>
+      <textarea
+        name="description"
+        id="description"
+        cols="30"
+        rows="10"
+        formControlName="description"
+        [ngStyle]="{
+          borderLeft:
+            description.invalid && (description.dirty || description.touched)
+              ? '5px solid red'
+              : description.valid
+              ? '5px solid green'
+              : ''
+        }"
+      ></textarea>
+      <div
+        *ngIf="
+          description.invalid && (description.dirty || description.touched)
+        "
+      >
+        <p *ngIf="description.errors?.['required']">description is required</p>
+        <p *ngIf="description.errors?.['minlength']">
+          description must be at least 10 characters long.
+        </p>
+      </div>
+    </div>
+
+    <div>
+      <label for="color">Color</label>
+      <input
+        type="text"
+        name="color"
+        id="color"
+        [ngStyle]="{
+          borderLeft:
+            color.invalid && (color.dirty || color.touched)
+              ? '5px solid red'
+              : color.valid
+              ? '5px solid green'
+              : ''
+        }"
+        #colorValue
+      />
+      <button
+        type="button"
+        (click)="[addColor(colorValue.value), (colorValue.value = '')]"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+      <div>
+        <div
+          *ngFor="let item of color.value"
+          [ngStyle]="{ display: 'flex', flexFlow: 'row nowrap' }"
+        >
+          <div>{{ item }}</div>
+          <div (click)="removeColor(item)"><mat-icon>delete</mat-icon></div>
+        </div>
+      </div>
+
+      <div *ngIf="color.invalid && (color.dirty || color.touched)">
+        <p *ngIf="color.errors?.['required']">color is required</p>
+      </div>
+    </div>
+
+    <div>
+      <label for="size">Size</label>
+      <input
+        type="text"
+        name="size"
+        id="size"
+        [ngStyle]="{
+          borderLeft:
+            size.invalid && (size.dirty || size.touched)
+              ? '5px solid red'
+              : size.valid
+              ? '5px solid green'
+              : ''
+        }"
+        #sizeValue
+      />
+      <button
+        class="add"
+        type="button"
+        (click)="[addSize(sizeValue.value), (sizeValue.value = '')]"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+      <div>
+        <div
+          *ngFor="let item of size.value"
+          [ngStyle]="{ display: 'flex', flexFlow: 'row nowrap' }"
+        >
+          <div>{{ item }}</div>
+          <div (click)="removeSize(item)"><mat-icon>delete</mat-icon></div>
+        </div>
+      </div>
+
+      <div *ngIf="size.invalid && (size.dirty || size.touched)">
+        <p *ngIf="size.errors?.['required']">size is required</p>
+      </div>
+    </div>
+    <button type="submit" (click)="productEditForm.markAllAsTouched()">
+      Save
+    </button>
+  </form>
+</div>

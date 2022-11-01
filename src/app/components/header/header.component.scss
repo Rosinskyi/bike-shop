@@ -1,0 +1,18 @@
+header {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 0;
+}
+.title {
+    font-size: 40px;
+    font-weight: bold;
+}
+.auth {
+    div {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+}

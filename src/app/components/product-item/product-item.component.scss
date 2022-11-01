@@ -1,0 +1,109 @@
+.product {
+    position: relative;
+    width: 380px;
+    height: 450px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    border: 1px solid #f1f5f8;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    
+    & > img {
+        width: 350px;
+        height: 250px;
+        object-fit: scale-down;
+        border-radius: 5px;
+        border-bottom: 1px solid #f1f5f8;
+        cursor: pointer;
+    }
+    & > button {
+        width: 150px;
+        background-color: #b95a25;
+        color: #f1f5f8;
+        padding: 10px 15px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        margin-left: 130px;
+        margin-top: auto;
+    }
+}
+.discount {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    opacity: 0.9;
+}
+
+.low-discount {
+    border: 2px solid orange;
+    .discount {
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        border-radius: 50%;
+        width: 70px;
+        height: 70px;
+        background-color: orange;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        opacity: 0.9;
+    }
+    .discount-price {
+        color: orange;
+    }
+}
+.middle-discount {
+    border: 2px solid pink;
+    .discount {
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        border-radius: 50%;
+        width: 70px;
+        height: 70px;
+        background-color: pink;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        opacity: 0.9;
+    }
+    .discount-price {
+        color: pink;
+    }
+}
+.high-discount {
+    border: 2px solid red;
+    .discount {
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        border-radius: 50%;
+        width: 70px;
+        height: 70px;
+        background-color: red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        opacity: 0.9;
+    }
+    .discount-price {
+        color: red;
+    }
+}

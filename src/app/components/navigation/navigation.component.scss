@@ -1,0 +1,9 @@
+nav > ul {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 50px;
+}
+a {
+    font-size: 25px;
+}

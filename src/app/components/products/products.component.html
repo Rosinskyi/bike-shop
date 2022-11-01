@@ -1,0 +1,7 @@
+<div class="title">
+  <div>Home / Products</div>
+  <div *ngIf="user && user.role === 'admin'">
+    <a routerLink="/add-product"><button>Add Product</button></a>
+  </div>
+</div>
+<app-products-list></app-products-list>

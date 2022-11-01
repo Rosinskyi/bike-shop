@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+body{
+    background-color: #f1f5f8;
+}
+button {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #b95a25;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}

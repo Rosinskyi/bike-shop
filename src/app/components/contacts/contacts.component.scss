@@ -1,0 +1,24 @@
+agm-map {
+    width: 500px;
+    height: 300px;
+}
+.content {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 20px;
+}
+.info {
+    font-size: 25px;
+    width: 500px;
+    p {
+        padding: 20px 0;
+    }
+    span {
+        font-weight: bold;
+        padding: -20px;
+    }
+}
+.title {
+    padding: 50px 0;
+    font-size: 40px;
+}

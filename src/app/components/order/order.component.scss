@@ -1,0 +1,62 @@
+.step {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+
+    gap: 10px;
+    font-size: 20px;
+    & div {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+
+        gap: 10px;
+        font-size: 20px;
+        & > input {
+            padding: 10px;
+            font-size: 20px;
+        }
+    }
+
+    & > select {
+        padding: 10px;
+        font-size: 20px;
+    }
+}
+.summary__item {
+    & p {
+        text-indent: 10px;
+    }
+}
+button {
+    padding: 10px;
+    font-size: 20px;
+    margin: 25px 25px 0 0;
+}
+input[type*="radio"] {
+    float: right;
+    appearance: none;
+
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #999;
+    transition: 0.2s all linear;
+    margin-right: 5px;
+
+    position: relative;
+    top: 4px;
+}
+
+input[type*="radio"]:checked {
+    border: 6px solid black;
+    outline: unset !important;
+}
+form {
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 0 0 none;
+    margin: 0 auto;
+    width: 500px;
+    height: 800px;
+}

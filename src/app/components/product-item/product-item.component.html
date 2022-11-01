@@ -1,0 +1,29 @@
+<div
+  class="product"
+  [ngClass]="{
+    'high-discount': item.discount >= 70,
+    'middle-discount': item.discount >= 60,
+    'low-discount': item.discount >= 50
+  }"
+>
+  <div class="discount" *ngIf="item.discount > 50">{{ item.discount }}</div>
+  <img
+    [src]="item.imgUrl[0]"
+    alt=""
+    srcset=""
+    [routerLink]="['/products', item.id]"
+  />
+  <h3>{{ item.name }}</h3>
+  <span *ngIf="item.discount === 0">{{ item.price | currency: "EUR" }}</span>
+  <div *ngIf="item.discount > 0">
+    <span [ngStyle]="{ 'text-decoration': 'line-through' }">{{
+      item.price | currency: "EUR"
+    }}</span>
+    <span class="discount-price">{{
+      item.price - (item.discount / 100) * item.price | currency: "EUR"
+    }}</span>
+  </div>
+
+  <p>{{ item.description | truncate }}</p>
+  <button (click)="onClick()">Buy</button>
+</div>

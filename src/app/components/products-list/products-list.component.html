@@ -1,0 +1,6 @@
+<div class="products">
+  <app-product-item
+    *ngFor="let item of products | orderBy: 'discount':'desc'"
+    [item]="item"
+  ></app-product-item>
+</div>

@@ -1,0 +1,14 @@
+<div class="window" @openClose>
+  <app-sign-in
+    *ngIf="signInWindow"
+    (onClick)="onClick()"
+    (onClose)="close()"
+  ></app-sign-in>
+  <app-sign-up
+    *ngIf="!signInWindow"
+    (onClick)="onClick()"
+    (onClose)="close()"
+  ></app-sign-up>
+</div>
+
+<div class="back"></div>
