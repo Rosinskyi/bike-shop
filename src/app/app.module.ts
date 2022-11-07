@@ -9,7 +9,6 @@ import { ProductItemComponent } from './components/product-item/product-item.com
 import { AppRoutingModule } from './app-routing.module';
 import { ProductsComponent } from './components/products/products.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
-import { AgmCoreModule } from '@agm/core';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { DiscountsComponent } from './components/discounts/discounts.component';
 import { OrderByPipe } from './pipes/order-by.pipe';
@@ -50,15 +49,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SignUpComponent,
     UsersListComponent,
     UserComponent,
-    AuthWindowComponent
+    AuthWindowComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AgmCoreModule.forRoot({
-      apiKey: '',
-      libraries: ['places'],
-    }),
     MatIconModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
