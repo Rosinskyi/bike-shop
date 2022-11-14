@@ -14,7 +14,7 @@ import { ProductsService } from 'src/app/services/products/products.service';
 export class ProductDetailComponent implements OnInit, OnDestroy {
   private id = this.route.snapshot.paramMap.get('id')!;
   product!: IProduct;
-  image!: string;
+  
   length: number = 35;
   private subscriptions: Subscription[] = [];
   deleteItemFlag: boolean = false;
@@ -46,9 +46,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   onClick() {
     console.log('smth');
   }
-  switchImage(link: string) {
-    this.image = link;
-  }
+  
   getUser() {
     const subscription = this.auth.user$.subscribe(
       (user) => (this.user = user)

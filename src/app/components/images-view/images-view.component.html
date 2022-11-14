@@ -1,0 +1,14 @@
+<div class="images">
+  <img [src]="image === undefined ? images[0] : image" alt="" srcset="" />
+
+  <div
+    class="images__list"
+    *ngFor="let link of images"
+    (click)="switchImage(link)"
+    [ngStyle]="{
+      border: link === image ? '1px solid black' : '1px solid grey'
+    }"
+  >
+    <img [src]="link" alt="" srcset="" />
+  </div>
+</div>

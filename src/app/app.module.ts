@@ -28,6 +28,7 @@ import { UsersListComponent } from './components/users-list/users-list.component
 import { UserComponent } from './components/user/user.component';
 import { AuthWindowComponent } from './components/auth-window/auth-window.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ImagesViewComponent } from './components/images-view/images-view.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UsersListComponent,
     UserComponent,
     AuthWindowComponent,
+    ImagesViewComponent,
   ],
   imports: [
     BrowserModule,
