@@ -1,6 +1,7 @@
-<div *ngIf="product != undefined">
+<div *ngIf="product != undefined && product.review.length > 0">
   <app-review-item
     *ngFor="let item of product.review"
     [review]="item"
   ></app-review-item>
 </div>
+<div>no reveiw</div>
